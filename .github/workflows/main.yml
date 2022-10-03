@@ -32,3 +32,11 @@ jobs:
         compiler: clang/9/binutils
         defconfig: r8q_eur_openx_defconfig
         image: Image.gz-dtb
+
+    - name: "Post build to Telegram"
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.CHANNEL_ID }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        message: ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }} is built!, took ${{ steps.build.outputs.elapsed_time }} seconds.
+        document: ${{ steps.build.outputs.outfile }}
