@@ -29,6 +29,6 @@ jobs:
         NAME: ${{ steps.vars.outputs.release_name }}
       with:
         arch: arm64
-        compiler: proton-clang/09fb113/binutils
+        compiler: clang/11/binutils
         defconfig: r8q_eur_openx_defconfig
         image: Image.gz-dtb
